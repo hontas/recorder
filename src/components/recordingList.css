@@ -1,0 +1,15 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.listItem {
+  flex-direction: row;
+  margin-bottom: 1em;
+}
+
+.audio {
+  margin: 0 1em;
+}

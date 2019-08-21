@@ -1,0 +1,23 @@
+:root {
+  --primary-color: #e2234f;
+}
+
+html {
+  box-sizing: border-box;
+}
+html * {
+  box-sizing: inherit;
+}
+html,
+body {
+  height: 100%;
+}
+a {
+  color: inherit;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+}
