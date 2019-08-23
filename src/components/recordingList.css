@@ -1,15 +1,27 @@
 .list {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.listItem {
-  flex-direction: row;
   margin-bottom: 1em;
 }
 
-.audio {
-  margin: 0 1em;
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.row > * {
+  margin: 0 0.5em;
+}
+
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: smaller;
+}
+.slider {
+  display: flex;
+}
+.sliderEl {
+  width: 7em;
 }

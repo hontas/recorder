@@ -28,6 +28,23 @@ const App = ({ error, recorder, isRecording, recordings }) => {
     return { ...state, isRecording: true };
   };
 
+  const updateRecording = (recording) => {
+    const recordingToUpdate = recordings.find(
+      ({ createdAt }) => createdAt === recording.createdAt
+    );
+    const index = recordings.indexOf(recordingToUpdate);
+
+    const updatedRecordings = [
+      ...recordings.slice(0, index),
+      { ...recording, updatedAt: Date.now() },
+      ...recordings.slice(index + 1)
+    ];
+
+    mergeState({
+      recordings: updatedRecordings
+    });
+  };
+
   const recordButtonText = isRecording ? 'Stop recording' : 'Start recording';
 
   return (
@@ -44,14 +61,17 @@ const App = ({ error, recorder, isRecording, recordings }) => {
         <Button onClick={getMic}>Get user media</Button>
       )}
 
-      <RecordingList recordings={recordings} />
+      <RecordingList
+        recordings={recordings}
+        updateRecording={updateRecording}
+      />
     </div>
   );
 };
 
 export default App;
 
-function getUserMedia() {
+async function getUserMedia() {
   return navigator.mediaDevices
     .getUserMedia({
       audio: true,
@@ -82,7 +102,7 @@ function setupForRecording(stream) {
     const blob = new Blob(chunks, { type: mimeType });
     const newRecording = {
       url: URL.createObjectURL(blob),
-      timestamp: Date.now()
+      createdAt: Date.now()
     };
     chunks = [];
 
