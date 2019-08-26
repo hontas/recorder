@@ -1,0 +1,39 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    branches:
+      only:
+        - master
+    docker:
+      - image: circleci/node:10
+
+    working_directory: ~/repo
+
+    environment:
+      GIT_DEPLOY_DIR: dist
+      GIT_DEPLOY_BRANCH: gh_pages
+      GIT_DEPLOY_USERNAME: hontas
+      GIT_DEPLOY_EMAIL: lundin.pontus@gmail.com
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn test
+
+      - run: yarn build && ./deploy.sh
