@@ -21,4 +21,4 @@ module.exports={};
 },{}],"H99C":[function(require,module,exports) {
 "use strict";var e=require("hyperapp"),r=t(require("./components/app.jsx"));function t(e){if(e&&e.__esModule)return e;var r={};if(null!=e)for(var t in e)if(Object.prototype.hasOwnProperty.call(e,t)){var o=Object.defineProperty&&Object.getOwnPropertyDescriptor?Object.getOwnPropertyDescriptor(e,t):{};o.get||o.set?Object.defineProperty(r,t,o):r[t]=e[t]}return r.default=e,r}require("./styles.css");const o={error:"",recorder:void 0,isRecording:!1,recordings:[]};(0,e.app)({init:o,view:r.default,node:document.getElementById("app-root"),subscriptions:e=>console.log("state",e),middleware:e=>((0,r.setDispatch)(e),e)});
 },{"hyperapp":"2S39","./components/app.jsx":"tjt/","./styles.css":"D9Nj"}]},{},["H99C"], null)
-//# sourceMappingURL=/src.91306ce3.js.map
+//# sourceMappingURL=/recorder/src.91306ce3.js.map
